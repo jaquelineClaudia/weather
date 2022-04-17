@@ -1,13 +1,356 @@
-body {
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap');
+
+* {
+  padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+:root {
+  --general-font: 'Lato', sans-serif;
 }
+
+#root {
+  position: relative;
+  z-index: -200;
+}
+
+body {
+  color: rgb(62, 211, 225);
+  font-family: var(--general-font);
+  letter-spacing: 0;
+  position: relative;
+  z-index: -100;
+}
+
+h1, h2, h3, p {
+  color: rgb(167, 220, 225);
+  display: inline-block;
+  text-transform: capitalize;
+}
+
+.App {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: -10;
+  background-image: url('https://th.bing.com/th/id/R.a5a210b0c40572c7298d1b7d3eee26fd?rik=k3JK9O2qok8d7w&riu=http%3a%2f%2f2.bp.blogspot.com%2f-8oyWKkP23Y4%2fVfGY3jnWhWI%2fAAAAAAACkQA%2fIM02LWXssIs%2fs1600%2f4322gif.gif&ehk=OLs4hcEzhrcVXI8jMdNoaUO5XzgyMEya%2fSzTaZmJ%2fyQ%3d&risl=&pid=ImgRaw&r=0');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.App::after {
+  content: '';
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  backdrop-filter: blur(80px);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -8;
+}
+
+.App.bg__clear {
+  background-image: url('https://c.tenor.com/ysxPNhn5QuIAAAAC/so-beautiful-beautiful-day.gif');
+}
+
+.App.bg__clouds {
+  background-image: url('https://media.giphy.com/media/Pp9W9tuVF5NwQ/giphy.gif');
+}
+
+.App.bg__drizzle {
+  background-image: url('https://i.pinimg.com/originals/25/46/af/2546afa4b8f881bf1ab91d1554aa496f.gif');
+}
+
+.App.bg__rain {
+  background-image: url('https://acegif.com/wp-content/uploads/rain-1.gif');
+}
+
+.App.bg__thunderstorm {
+  background-image: url('https://media3.giphy.com/media/mTdVKHLEFTGWQ/giphy.gif');
+}
+
+.App.bg__snow {
+  background-image: url('https://i.pinimg.com/originals/95/e8/2d/95e82d311a9c58d3f5e758c1d472f994.gif');
+}
+
+.App.bg__atmosphere {
+  background-image: url('https://i.pinimg.com/originals/3c/6d/81/3c6d812bd53d19b45202e5483380b97a.gif');
+}
+
+
+.weather__card {
+  position: relative;
+  z-index: -6;
+  z-index: 100;
+  width: 550px;
+  height: 350px;
+  border-radius: 10px;
+  background-image: url('https://i.gifer.com/AH2X.gif');
+  box-shadow: 0px 10px 30px #10101a, inset 0 0 30px #0002;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  overflow: hidden;
+}
+
+.weather__card::after {
+  content: '';
+  width: 90%;
+  height: 100%;
+  background: linear-gradient(-90deg, #000, #000, #0009, transparent);
+  position: absolute;
+  top: 0;
+  right: 0;
+  opacity: .9;
+}
+
+
+.weather__card.clear {
+  background-image: url('https://c.tenor.com/ysxPNhn5QuIAAAAC/so-beautiful-beautiful-day.gif');
+}
+
+.weather__card.clouds {
+  background-image: url('https://media.giphy.com/media/Pp9W9tuVF5NwQ/giphy.gif');
+}
+
+.weather__card.drizzle {
+  background-image: url('https://i.pinimg.com/originals/25/46/af/2546afa4b8f881bf1ab91d1554aa496f.gif');
+}
+
+.weather__card.rain {
+  background-image: url('https://acegif.com/wp-content/uploads/rain-1.gif');
+}
+
+.weather__card.thunderstorm {
+  background-image: url('https://media3.giphy.com/media/mTdVKHLEFTGWQ/giphy.gif');
+}
+
+.weather__card.snow {
+  background-image: url('https://i.pinimg.com/originals/95/e8/2d/95e82d311a9c58d3f5e758c1d472f994.gif');
+}
+
+.weather__card.atmosphere {
+  background-image: url('https://i.pinimg.com/originals/3c/6d/81/3c6d812bd53d19b45202e5483380b97a.gif');
+}
+
+.card {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  padding: 15px;
+  display: flex;
+  flex-direction: row;
+}
+
+.card__main {
+  width: 67%;
+  height: 100%;
+  padding-right: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card__main--location {
+  width: 100%;
+  height: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.card__main--location>span {
+  width: auto;
+  height: 100%;
+  font-size: 18px;
+  padding-right: 10px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.card__main--location>p {
+  width: auto;
+  height: auto;
+  font-size: 22px;
+  font-weight: 300;
+  justify-content: flex-end;
+}
+
+.card__main--info {
+  width: 100%;
+  height: auto;
+}
+
+.card__main--weather {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.card__main--weather>p {
+  font-size: 32px;
+  font-weight: 300;
+}
+
+.card__main--footer {
+  width: 100%;
+  height: auto;
+  padding-top: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.card__main--temp {
+  width: auto;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-end;
+  text-align: start;
+  line-height: .9;
+}
+
+.card__temperature {
+  font-size: 80px;
+  font-weight: 300;
+}
+
+.card__main--tempAux {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.card__main--deg {
+  font-size: 30px;
+  padding-bottom: 7px;
+}
+
+.card__main--units {
+  font-size: 50px;
+  font-weight: 400;
+}
+
+.card__separator {
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(0deg, transparent, #fff3, transparent);
+}
+
+
+.card__aside {
+  width: 33%;
+  height: 100%;
+  padding-left: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card__aside--weather {
+  width: 100%;
+  height: 45%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.card__aside--description {
+  width: 100%;
+  height: auto;
+  font-size: 40px;
+  font-weight: 300;
+  text-align: center;
+}
+
+.card__aside--info {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.card__aside--info>div {
+  padding: 2px 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.card__aside--info>div>span {
+  width: 30px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.card__aside--info>div>span>i {
+  width: 50%;
+  font-size: 28px;
+  margin-right: 30px;
+  text-align: end;
+}
+
+.card__aside--info>div>p {
+  width: 55%;
+  font-size: 30px;
+  font-weight: 300;
+  margin-right: 20px;
+}
+
+.card__aside--buttons {
+  width: 100%;
+  height: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.button__change--temp {
+  width: auto;
+  height: 20px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: all 300ms ease;
+}
+
+.button__text {
+  color: rgba(0, 225, 255, 0.333);
+  font-family: var(--general-font);
+  font-weight: 700;
+  font-size: 22px;
+  transition: all 200ms ease;
+}
+
+.button__text.active {
+  color: rgb(32, 14, 239);
+  transform: translateY(-2px);
+}
+
+.button__text.fahrenheit {
+  margin-left: 10px;
+}
+
