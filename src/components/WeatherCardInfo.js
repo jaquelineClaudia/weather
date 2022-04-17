@@ -16,7 +16,6 @@ const WeatherCardInfo = () => {
     windSpeed,
     weatherMain,
     weatherDescription,
-    weatherIcon,
   } = useCurrentWeather();
 
 
